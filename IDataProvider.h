@@ -7,7 +7,7 @@
 
 namespace Disruptor {
 
-    template <class T>
+    template <typename T>
     class IDataProvider {
     public:
         virtual T operator[](long sequence) = 0;

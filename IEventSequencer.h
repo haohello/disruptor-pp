@@ -10,9 +10,9 @@
 
 namespace Disruptor {
 
-    template <class T>
+    template <typename T>
     class IEventSequence: public IDataProvider<T>, public ISequenced {
-        
+
     };
 }
 
