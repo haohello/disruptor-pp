@@ -1,16 +1,17 @@
 //
-// Created by ubuntu on 17-11-16.
+// Created by ubuntu on 17-11-18.
 //
 
 #ifndef DISRUPTOR_PP_IDATAPROVIDER_H
 #define DISRUPTOR_PP_IDATAPROVIDER_H
 
-namespace Disruptor {
+#include <cstdint>
 
+namespace Disruptor::Interfaces {
     template <typename T>
     class IDataProvider {
     public:
-        virtual T operator[](long sequence) = 0;
+        virtual T operator[](const int64_t& sequence) = 0;
     };
 }
 

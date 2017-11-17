@@ -5,7 +5,9 @@
 #ifndef DISRUPTOR_PP_ISEQUENCED_H
 #define DISRUPTOR_PP_ISEQUENCED_H
 
-namespace Disruptor {
+#include <cstdint>
+
+namespace Disruptor::Interfaces {
 
     class ISequenced {
     public:
@@ -20,25 +22,25 @@ namespace Disruptor {
         /// </summary>
         /// <param name="requiredCapacity">requiredCapacity in the buffer</param>
         /// <returns>true if the buffer has the capacity to allocate the next sequence otherwise false.</returns>
-        virtual bool HasAvailableCapacity(int requiredCapacity) = 0;
+        virtual bool HasAvailableCapacity(const int& requiredCapacity) = 0;
 
         /// <summary>
         /// Get the remaining capacity for this sequencer. return The number of slots remaining.
         /// </summary>
-        virtual long GetRemainingCapacity() = 0;
+        virtual int64_t GetRemainingCapacity() = 0;
 
         /// <summary>
         /// Claim the next event in sequence for publishing.
         /// </summary>
         /// <returns>the claimed sequence value</returns>
-        virtual long Next() = 0;
+        virtual int64_t Next() = 0;
 
         /// <summary>
         /// Claim the next n events in sequence for publishing.  This is for batch event producing.  Using batch producing requires a little care and some math.
         /// <code>
         ///     int n = 10;
-        ///     long hi = sequencer.next(n);
-        ///     long lo = hi - (n - 1);
+        ///     int64_t hi = sequencer.next(n);
+        ///     int64_t lo = hi - (n - 1);
         ///     for (long sequence = lo; sequence &lt;= hi; sequence++) {
         ///        // Do work.
         ///     }
@@ -47,14 +49,14 @@ namespace Disruptor {
         /// </summary>
         /// <param name="n">the number of sequences to claim</param>
         /// <returns>the highest claimed sequence value</returns>
-        virtual long Next(int n) = 0;
+        virtual int64_t Next(const int& n) = 0;
 
         /// <summary>
         /// Attempt to claim the next event in sequence for publishing.  Will return the number of the slot if there is at least<code>requiredCapacity</code> slots available.
         /// </summary>
         /// <returns>the claimed sequence value</returns>
         /// <exception cref="InsufficientCapacityException">if there is no space available in the ring buffer.</exception>
-        virtual long TryNext() = 0;
+        virtual int64_t TryNext() = 0;
 
         /// <summary>
         /// Attempt to claim the next n events in sequence for publishing.  Will return the highest numbered slot if there is at least &lt;code&gt;requiredCapacity&lt;/code&gt; slots
@@ -63,20 +65,20 @@ namespace Disruptor {
         /// <param name="n">the number of sequences to claim</param>
         /// <returns>the claimed sequence value</returns>
         /// <exception cref="InsufficientCapacityException">if there is no space available in the ring buffer.</exception>
-        virtual long TryNext(int n) = 0;
+        virtual int64_t TryNext(const int& n) = 0;
 
         /// <summary>
         /// Publishes a sequence. Call when the event has been filled.
         /// </summary>
         /// <param name="sequence">the sequence to be published.</param>
-        virtual void Publish(long sequence) = 0;
+        virtual void Publish(const int64_t& sequence) = 0;
 
         /// <summary>
         /// Batch publish sequences.  Called when all of the events have been filled.
         /// </summary>
         /// <param name="lo">first sequence number to publish</param>
         /// <param name="hi">last sequence number to publish</param>
-        virtual void Publish(long lo, long hi) = 0;
+        virtual void Publish(const int64_t& lo, const int64_t& hi) = 0;
 
     };
 }

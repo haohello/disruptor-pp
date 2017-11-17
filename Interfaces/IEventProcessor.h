@@ -7,7 +7,7 @@
 
 #include "ISequence.h"
 
-namespace Disruptor {
+namespace Disruptor::Interfaces {
 
     /// <summary>
     /// <see cref="IEventProcessor"/> waitFor events to become available for consumption from the <see cref="RingBuffer{T}"/>

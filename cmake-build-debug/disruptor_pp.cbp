@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="disruptor_pp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ubuntu/projects/disruptor-pp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ubuntu/projects/disruptor-pp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ubuntu/projects/disruptor-pp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="disruptor_pp">
+				<Option output="/home/ubuntu/projects/disruptor-pp/cmake-build-debug/disruptor_pp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/projects/disruptor-pp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 disruptor_pp"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="disruptor_pp/fast">
+				<Option output="/home/ubuntu/projects/disruptor-pp/cmake-build-debug/disruptor_pp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/projects/disruptor-pp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 disruptor_pp/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ubuntu/projects/disruptor-pp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/EventPoller.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/FixedSequenceGroup.cpp">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/FixedSequenceGroup.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/IgnoreExceptionHandler.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/InsufficientCapacityException.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IBatchStartAware.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ICursored.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IDataProvider.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventHandler.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventProcessor.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventReleaseAware.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventReleaser.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventSequencer.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventSink.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventTranslator.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventTranslatorOneArg.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventTranslatorThreeArg.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventTranslatorTwoArg.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IEventTranslatorVararg.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IExceptionHandler.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ILifecycleAware.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ISequence.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ISequenceBarrier.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ISequenced.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ISequencer.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/ITimeoutHandler.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/Interfaces/IWorkHandler.h">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/main.cpp">
+			<Option target="disruptor_pp"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/projects/disruptor-pp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -8,7 +8,7 @@
 #include "IDataProvider.h"
 #include "ISequenced.h"
 
-namespace Disruptor {
+namespace Disruptor::Interfaces {
 
     template <typename T>
     class IEventSequence: public IDataProvider<T>, public ISequenced {

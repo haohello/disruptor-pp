@@ -5,7 +5,9 @@
 #ifndef DISRUPTOR_PP_ISEQUENCEBARRIER_H
 #define DISRUPTOR_PP_ISEQUENCEBARRIER_H
 
-namespace Disruptor {
+#include <cstdint>
+
+namespace Disruptor::Interfaces {
     /// <summary>
     /// Coordination barrier for tracking the cursor for producers and sequence of
     /// dependent <see cref="IEventProcessor"/>s for a <see cref="RingBuffer{T}"/>
@@ -20,13 +22,13 @@ namespace Disruptor {
         /// <returns>the sequence up to which is available</returns>
         /// <exception cref="AlertException">if a status change has occurred for the Disruptor</exception>
         /// <exception cref="TimeoutException">if a timeout occurs while waiting for the supplied sequence.</exception>
-        virtual long WaitFor(long sequence) = 0;
+        virtual int64_t WaitFor(const int64_t& sequence) = 0;
 
         /// <summary>
         /// Delegate a call to the <see cref="Sequencer.Cursor"/>
         /// Returns the value of the cursor for events that have been published.
         /// </summary>
-        virtual long GetCursor() = 0;
+        virtual int64_t GetCursor() = 0;
 
         /// <summary>
         /// The current alert status for the barrier.
