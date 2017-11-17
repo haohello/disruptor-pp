@@ -9,7 +9,7 @@
 
 namespace Disruptor {
 
-    class Sequence : public ISequence
+    class Sequence : public Interfaces::ISequence
     {
 
     };
