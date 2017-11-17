@@ -6,7 +6,7 @@
 #define DISRUPTOR_PP_IWAITSTRATEGY_H
 
 #include <cstdint>
-#include "Sequence.h"
+#include "../Sequence.h"
 #include "ISequenceBarrier.h"
 
 namespace Disruptor::Interfaces {
