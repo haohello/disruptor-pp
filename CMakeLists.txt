@@ -14,4 +14,10 @@ set(SOURCE_FILES main.cpp
         FixedSequenceGroup.h FixedSequenceGroup.cpp Interfaces/ISequencer.h
         IgnoreExceptionHandler.h Exceptions/InsufficientCapacityException.h EventPoller.h
         Sequence.cpp Sequence.h SequenceGroups.cpp SequenceGroups.h Interfaces/IWaitStrategy.h Util/Utils.h SequenceGroup.cpp SequenceGroup.h Util/AggressiveSpinWait.h Exceptions/AlertException.h Exceptions/TimeoutException.h SequenceArrayWrapper.h)
+
+
 add_executable(disruptor_pp ${SOURCE_FILES})
+
+target_link_libraries(disruptor_pp
+        ${CMAKE_DL_LIBS}
+        atomic)

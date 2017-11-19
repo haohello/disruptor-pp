@@ -11,6 +11,7 @@
 #include "Interfaces/ISequence.h"
 #include "Util/Utils.h"
 #include "SequenceArrayWrapper.h"
+#include "SequenceGroups.h"
 
 namespace Disruptor {
     /// <summary>
@@ -26,35 +27,29 @@ namespace Disruptor {
         std::atomic<SequenceArrayWrapper> _seqArrWrpr;
 
     public:
-        int64_t GetValue() override {
-            auto seqArrWrpr = _seqArrWrpr.load(std::memory_order_acquire);
-            auto length = seqArrWrpr.GetLength();
-            auto sequences = seqArrWrpr.GetValue();
-            return Utils::GetMinimumSequence(sequences, length);
-        };
+        int64_t GetValue() override;
 
-        void SetValue(const int64_t& value) override {
-            auto seqArrWrpr = _seqArrWrpr.load(std::memory_order_acquire);
-            auto length = seqArrWrpr.GetLength();
-            auto sequences = seqArrWrpr.GetValue();
+        void SetValue(const int64_t& value) override;
 
-            for(auto i = 0; i < length; i++) {
-                sequences[i]->SetValue(value);
-            }
-            _seqArrWrpr.store(seqArrWrpr, std::memory_order_release);
-        };
+        bool CompareAndSet(int64_t& expectedSequence, int64_t& nextSequence) override;
 
-        bool CompareAndSet(int64_t& expectedSequence, int64_t& nextSequence) override {
-            throw "Not supported exception.";
-        };
+        int64_t IncrementAndGet() override;
 
-        int64_t IncrementAndGet() override {
-            throw "Not supported exception.";
-        };
+        int64_t AddAndGet(const int64_t& val) override;
 
-        int64_t AddAndGet(const int64_t& val) override {
-            throw "Not supported exception.";
-        };
+        /// <summary>
+        /// Add a <see cref="Sequence"/> into this aggregate. This should only be used during
+        /// initialisation. Use <see cref="SequenceGroup.AddWhileRunning"/>.
+        /// </summary>
+        /// <param name="sequence">sequence to be added to the aggregate.</param>
+        void Add(Interfaces::ISequence* sequence);
+
+        /// <summary>
+        /// Remove the first occurrence of the <see cref="Sequence"/> from this aggregate.
+        /// </summary>
+        /// <param name="sequence">sequence to be removed from this aggregate.</param>
+        /// <returns>true if the sequence was removed otherwise false.</returns>
+        bool Remove(Interfaces::ISequence* sequence);
     };
 }
 
