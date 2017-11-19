@@ -2,6 +2,13 @@
 // Created by ubuntu on 17-11-17.
 //
 
+#ifndef CACHE_LINE_SIZE_IN_BYTES     // NOLINT
+#define CACHE_LINE_SIZE_IN_BYTES 64  // NOLINT
+#endif                               // NOLINT
+#define ATOMIC_SEQUENCE_PADDING_LENGTH \
+  (CACHE_LINE_SIZE_IN_BYTES - sizeof(std::atomic<int64_t>)) / 8
+#define SEQUENCE_PADDING_LENGTH (CACHE_LINE_SIZE_IN_BYTES - sizeof(int64_t)) / 8
+
 #ifndef DISRUPTOR_PP_SEQUENCE_H
 #define DISRUPTOR_PP_SEQUENCE_H
 
@@ -12,34 +19,11 @@
 
 namespace Disruptor {
 
-    /**
-         *
-         * [StructLayout(LayoutKind.Explicit, Size = 120)]
-            private struct Fields
-            {
-                /// <summary>Volatile in the Java version => always use Volatile.Read/Write or Interlocked methods to access this field.</summary>
-                [FieldOffset(56)]
-                public long Value;
-
-                public Fields(long value)
-                {
-                    Value = value;
-                }
-            }
-         *
-         */
-
-#pragma pack(push)
-#pragma pack(1)
-    struct Fields {
-        /// <summary>Volatile in the Java version => always use Volatile.Read/Write or Interlocked methods to access this field.</summary>
-        unsigned char : 56;
-        int64_t Value : 64;
-        Fields(const int64_t& val) {
-            Value = val;
-        }
-    };
-#pragma pack(pop)
+    // special cursor values
+    constexpr int64_t kInitialCursorValue = -1L;
+    constexpr int64_t kAlertedSignal = -2L;
+    constexpr int64_t kTimeoutSignal = -3L;
+    constexpr int64_t kFirstSequenceValue = kInitialCursorValue + 1L;
 
     /// <summary>
     /// <p>Concurrent sequence class used for tracking the progress of
@@ -51,31 +35,40 @@ namespace Disruptor {
     /// </summary>
     class Sequence : public Interfaces::ISequence
     {
-    private:
-        std::atomic<Fields> _fields;
-        std::atomic_int64_t fid;
     public:
-        /// <summary>
-        /// Set to -1 as sequence starting point
-        /// </summary>
-        const int64_t InitialCursorValue = -1;
-
-        /// <summary>
-        /// Construct a new sequence counter that can be tracked across threads.
-        /// </summary>
-        /// <param name="initialValue">initial value for the counter</param>
-        Sequence() : _fields(InitialCursorValue) {};
-        Sequence(const Sequence& seq) = delete;
+        Sequence(int64_t initial_value = kInitialCursorValue)
+                : value(initial_value) {}
 
 
 
         /// <summary>
         /// Current sequence number
         /// </summary>
-        int64_t Value() {
-            //fid.compare_exchange_strong()
-            return _fields.load(std::memory_order_acq_rel).Value;
-        };
+        int64_t Value();
+
+        /// <summary>
+        /// Perform an ordered write of this sequence.  The intent is
+        /// a Store/Store barrier between this write and any previous
+        /// store.
+        /// </summary>
+        /// <param name="value">The new value for the sequence.</param>
+        void SetValue(const int64_t& val) override;
+
+        bool CompareAndSet(int64_t& expectedSequence, int64_t& nextSequence) override;
+
+        int64_t IncrementAndGet() override;
+
+        int64_t AddAndGet(const int64_t& val) override;
+
+    private:
+        // padding
+        int64_t padding0_[ATOMIC_SEQUENCE_PADDING_LENGTH];
+        // members
+        std::atomic<int64_t> value;
+        // padding
+        int64_t padding1_[ATOMIC_SEQUENCE_PADDING_LENGTH];
+
+        DISALLOW_COPY_MOVE_AND_ASSIGN(Sequence);
     };
 
 }

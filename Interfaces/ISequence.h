@@ -29,7 +29,7 @@ namespace Disruptor::Interfaces {
         /// write and a Store/Load barrier between this write and any subsequent volatile read.
         /// </summary>
         /// <param name="value"></param>
-        virtual void SetValueVolatile(const int64_t& value) = 0;
+        //virtual void SetValueVolatile(const int64_t& value) = 0;
 
         /// <summary>
         /// Atomically set the value to the given updated value if the current value == the expected value.
@@ -37,7 +37,7 @@ namespace Disruptor::Interfaces {
         /// <param name="expectedSequence">the expected value for the sequence</param>
         /// <param name="nextSequence">the new value for the sequence</param>
         /// <returns>true if successful. False return indicates that the actual value was not equal to the expected value.</returns>
-        virtual bool CompareAndSet(const int64_t& expectedSequence, const int64_t& nextSequence) = 0;
+        virtual bool CompareAndSet(int64_t& expectedSequence, int64_t& nextSequence) = 0;
 
         ///<summary>
         /// Increments the sequence and stores the result, as an atomic operation.
