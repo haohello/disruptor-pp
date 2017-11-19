@@ -17,7 +17,7 @@ namespace Disruptor::Interfaces {
         /// <summary>
         /// Return a reference to the <see cref="ISequence"/> being used by this <see cref="IEventProcessor"/>
         /// </summary>
-        virtual ISequence GetSequence() = 0;
+        virtual ISequence* GetSequence() = 0;
 
         /// <summary>
         /// Signal that this <see cref="IEventProcessor"/> should stop when it has finished consuming at the next clean break.

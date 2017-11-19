@@ -39,8 +39,6 @@ namespace Disruptor {
         Sequence(int64_t initial_value = kInitialCursorValue)
                 : value(initial_value) {}
 
-
-
         /// <summary>
         /// Current sequence number
         /// </summary>
@@ -71,6 +69,22 @@ namespace Disruptor {
         DISALLOW_COPY_MOVE_AND_ASSIGN(Sequence);
     };
 
+
+    // This counter is not thread safe.
+    class MutableLong {
+    public:
+        MutableLong(int64_t initial_value = kInitialCursorValue) :
+                sequence_(initial_value) {}
+
+        int64_t sequence() const { return sequence_; }
+
+        void set_sequence(const int64_t& sequence) { sequence_ = sequence; };
+
+        int64_t IncrementAndGet(const int64_t& delta) { sequence_ += delta; return sequence_; }
+
+    private:
+        volatile int64_t sequence_;
+    };
 }
 
 
