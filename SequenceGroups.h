@@ -5,10 +5,14 @@
 #ifndef DISRUPTOR_PP_SEQUENCEGROUPS_H
 #define DISRUPTOR_PP_SEQUENCEGROUPS_H
 
+#include <cstdint>
+#include "Interfaces/ISequence.h"
+#include "Util/Utils.h"
 
-class SequenceGroups {
+namespace Disruptor {
+    class SequenceGroups {
 
-};
-
+    };
+}
 
 #endif //DISRUPTOR_PP_SEQUENCEGROUPS_H

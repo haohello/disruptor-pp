@@ -13,15 +13,33 @@
   TypeName(const TypeName&&) = delete;          \
   void operator=(const TypeName&) = delete
 
+#ifdef _MSC_VER_ // for MSVC
+#define ALWAYS_INLINE __forceinline
+#elif defined __GNUC__ // for gcc on Linux/Apple OS X
+#define ALWAYS_INLINE __inline__ __attribute__((always_inline))
+#else
+#define ALWAYS_INLINE inline
+#endif
+
 #include <cstdint>
 #include <climits>
 #include <vector>
+#include <xmmintrin.h>
 #include "../Interfaces/ISequence.h"
 #include "../Interfaces/IEventProcessor.h"
 
 namespace Disruptor {
     class Utils {
     public:
+        ALWAYS_INLINE static void CpuRelax()
+        {
+        #if (COMPILER == MVCC)
+                    _mm_pause();
+        #elif (COMPILER == GCC || COMPILER == LLVM)
+                    asm("pause");
+        #endif
+        };
+
         static int CeilingNextPowerOfTwo(int x) {
           int r = 2;
           while(r < x) r <<= 1;
