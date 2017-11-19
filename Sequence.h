@@ -42,7 +42,7 @@ namespace Disruptor {
         /// <summary>
         /// Current sequence number
         /// </summary>
-        int64_t Value();
+        int64_t GetValue() override;
 
         /// <summary>
         /// Perform an ordered write of this sequence.  The intent is

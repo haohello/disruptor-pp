@@ -12,6 +12,6 @@ set(SOURCE_FILES main.cpp
         Interfaces/IEventTranslatorVararg.h Interfaces/IEventReleaseAware.h Interfaces/IEventSink.h
         Interfaces/IEventHandler.h Interfaces/IBatchStartAware.h Interfaces/IEventSequencer.h
         FixedSequenceGroup.h FixedSequenceGroup.cpp Interfaces/ISequencer.h
-        IgnoreExceptionHandler.h InsufficientCapacityException.h EventPoller.h
-        Sequence.cpp Sequence.h SequenceGroups.cpp SequenceGroups.h Interfaces/IWaitStrategy.h Util/Utils.h SequenceGroup.cpp SequenceGroup.h Util/AggressiveSpinWait.h)
+        IgnoreExceptionHandler.h Exceptions/InsufficientCapacityException.h EventPoller.h
+        Sequence.cpp Sequence.h SequenceGroups.cpp SequenceGroups.h Interfaces/IWaitStrategy.h Util/Utils.h SequenceGroup.cpp SequenceGroup.h Util/AggressiveSpinWait.h Exceptions/AlertException.h Exceptions/TimeoutException.h)
 add_executable(disruptor_pp ${SOURCE_FILES})

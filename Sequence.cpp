@@ -4,7 +4,7 @@
 
 #include "Sequence.h"
 
-int64_t Disruptor::Sequence::Value() {
+int64_t Disruptor::Sequence::GetValue() {
     //fid.compare_exchange_strong()
     return value.load(std::memory_order_acquire);
 }
