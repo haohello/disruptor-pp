@@ -58,3 +58,12 @@ void Disruptor::SequenceGroup::Add(Disruptor::Interfaces::ISequence *sequence) {
 bool Disruptor::SequenceGroup::Remove(Disruptor::Interfaces::ISequence *sequence) {
     return SequenceGroups::RemoveSequence(std::ref(_seqArrWrpr), sequence);
 }
+
+int Disruptor::SequenceGroup::Size() {
+    return _seqArrWrpr.load(std::memory_order_acquire).GetLength();
+}
+
+void Disruptor::SequenceGroup::AddWhileRunning(Disruptor::Interfaces::ICursored *cursored,
+                                               Disruptor::Interfaces::ISequence *sequence) {
+    SequenceGroups::AddSequences(std::ref(_seqArrWrpr), cursored, sequence);
+}

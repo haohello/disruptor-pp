@@ -8,3 +8,8 @@ bool Disruptor::SequenceGroups::RemoveSequence(std::atomic<Disruptor::SequenceAr
                                                Disruptor::Interfaces::ISequence *sequence) {
     return false;
 }
+
+void Disruptor::SequenceGroups::AddSequences(std::atomic<Disruptor::SequenceArrayWrapper> &seqArrWrper,
+                                             Disruptor::Interfaces::ICursored *cursor, ...) {
+
+}

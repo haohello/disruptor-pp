@@ -9,9 +9,11 @@
 #include <atomic>
 #include <vector>
 #include "Interfaces/ISequence.h"
+#include "Interfaces/ICursored.h"
 #include "Util/Utils.h"
 #include "SequenceArrayWrapper.h"
 #include "SequenceGroups.h"
+#include "Sequence.h"
 
 namespace Disruptor {
     /// <summary>
@@ -50,6 +52,20 @@ namespace Disruptor {
         /// <param name="sequence">sequence to be removed from this aggregate.</param>
         /// <returns>true if the sequence was removed otherwise false.</returns>
         bool Remove(Interfaces::ISequence* sequence);
+
+        /// <summary>
+        /// Get the size of the group.
+        /// </summary>
+        int Size();
+
+        /// <summary>
+        /// Adds a sequence to the sequence group after threads have started to publish to
+        /// the Disruptor.It will set the sequences to cursor value of the ringBuffer
+        /// just after adding them.  This should prevent any nasty rewind/wrapping effects.
+        /// </summary>
+        /// <param name="cursored">The data structure that the owner of this sequence group will be pulling it's events from</param>
+        /// <param name="sequence">The sequence to add</param>
+        void AddWhileRunning(Interfaces::ICursored* cursored, Interfaces::ISequence* sequence);
     };
 }
 

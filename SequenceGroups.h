@@ -6,15 +6,18 @@
 #define DISRUPTOR_PP_SEQUENCEGROUPS_H
 
 #include <cstdint>
+#include <cstdarg>
 #include <atomic>
 #include <functional>
 #include "Interfaces/ISequence.h"
+#include "Interfaces/ICursored.h"
 #include "Util/Utils.h"
 #include "SequenceArrayWrapper.h"
 
 namespace Disruptor {
     class SequenceGroups {
     public:
+        static void AddSequences(std::atomic<SequenceArrayWrapper>& seqArrWrper, Interfaces::ICursored* cursor, ...);
         static bool RemoveSequence(std::atomic<SequenceArrayWrapper>& seqArrWrper, Interfaces::ISequence* sequence);
     };
 }
