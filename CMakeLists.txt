@@ -13,5 +13,5 @@ set(SOURCE_FILES main.cpp
         Interfaces/IEventHandler.h Interfaces/IBatchStartAware.h Interfaces/IEventSequencer.h
         FixedSequenceGroup.h FixedSequenceGroup.cpp Interfaces/ISequencer.h
         IgnoreExceptionHandler.h InsufficientCapacityException.h EventPoller.h
-        Sequence.cpp Sequence.h SequenceGroups.cpp SequenceGroups.h Interfaces/IWaitStrategy.h)
+        Sequence.cpp Sequence.h SequenceGroups.cpp SequenceGroups.h Interfaces/IWaitStrategy.h Util/Utils.h)
 add_executable(disruptor_pp ${SOURCE_FILES})
