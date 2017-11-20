@@ -67,18 +67,6 @@ namespace Disruptor {
           return minimum;
         };
 
-        static int64_t GetMinimumSequence(Interfaces::ISequence** sequences, const int& length) {
-            int64_t minimum = LONG_MAX;
-
-            for(auto i = 0; i < length; i++) {
-                const int64_t value = sequences[i]->GetValue();
-                minimum = minimum < value ? minimum : value;
-            }
-
-            return minimum;
-        };
-
-
         static std::vector<Interfaces::ISequence*> GetSequencesFor(const std::vector<Interfaces::IEventProcessor*> processors)
         {
             std::vector<Interfaces::ISequence*> sequences;

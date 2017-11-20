@@ -16,10 +16,13 @@
 
 namespace Disruptor {
     class SequenceGroups {
+    private:
+        static int CountMatching(Interfaces::ISequence** sequences, int length,  Interfaces::ISequence* sequence);
     public:
-        static void AddSequences(std::atomic<SequenceArrayWrapper>& seqArrWrper, Interfaces::ICursored* cursor, ...);
+        /*static void AddSequences(std::atomic<SequenceArrayWrapper>& seqArrWrper, Interfaces::ICursored* cursor, ...);
         static bool RemoveSequence(std::atomic<SequenceArrayWrapper>& seqArrWrper, Interfaces::ISequence* sequence);
-    };
+    */
+         };
 }
 
 #endif //DISRUPTOR_PP_SEQUENCEGROUPS_H
